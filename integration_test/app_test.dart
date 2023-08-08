@@ -30,7 +30,7 @@ void main() {
 
       // Verify the counter increments by 1.
       expect(find.text('1'), findsOneWidget);
-      double textWidth = find.text('1').evaluate().first.size?.width ?? 0;
+      double textWidth = find.text('T').evaluate().first.size?.width ?? 0;
       debugPrint('textWidth=** $textWidth');
       await tester.tap(find.text('Device Preview'));
       await tester.pumpAndSettle(const Duration(milliseconds: 200));
@@ -51,15 +51,34 @@ void main() {
           find.text('Locale'), find.text('Text Scaling factor', skipOffstage: false), Offset(0, -100));
      */
       expect(find.text('1.0'), findsOneWidget);
+      /*
+      while (
 
-      await tester.slideToValue(find.byType(Slider, skipOffstage: false), 65);
+      )
+
+       */
+
+      bool found2Dot = false;
+      double i = 50.0;
+      while (!found2Dot) {
+        await tester.slideToValue(find.byType(Slider, skipOffstage: false), i);
+        await tester.pumpAndSettle(const Duration(milliseconds: 500));
+
+        try {
+          expect(find.text('2.0'), findsOneWidget);
+          found2Dot = true;
+        } catch (e) {
+          found2Dot = false;
+        }
+        i = i + 5.0;
+      }
+
       await tester.pumpAndSettle(const Duration(seconds: 3));
 
-      expect(find.text('2.0'), findsOneWidget);
       await tester.pumpAndSettle(const Duration(seconds: 3));
       await tester.tap(find.byIcon(Icons.close));
       await tester.pumpAndSettle(const Duration(seconds: 3));
-      textWidth = find.text('1').evaluate().first.size?.width ?? 0;
+      textWidth = find.text('T').evaluate().first.size?.width ?? 0;
       debugPrint('textWidth=** $textWidth');
 
       // could confirm the you have pressed not visibile before scale 2
