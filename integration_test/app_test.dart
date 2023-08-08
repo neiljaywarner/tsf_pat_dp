@@ -33,14 +33,14 @@ void main() {
       await tester.tap(find.text('Device Preview'));
       await tester.pumpAndSettle(const Duration(milliseconds: 200));
 
-      await tester.drag(find.text('Frame visibility'), const Offset(0, -400));
+      await tester.drag(find.text('Frame visibility'), const Offset(0, -800));
       await tester.pumpAndSettle(const Duration(milliseconds: 300));
-
-      await tester.drag(find.text('Accessible navigation'), const Offset(0, -200));
-      await tester.pumpAndSettle(const Duration(milliseconds: 200));
-
-      await tester.drag(find.text('Bold text'), const Offset(0, -200));
-      await tester.pumpAndSettle(const Duration(milliseconds: 200));
+      //
+      // await tester.drag(find.text('Accessible navigation'), const Offset(0, -200));
+      // await tester.pumpAndSettle(const Duration(milliseconds: 200));
+      //
+      // await tester.drag(find.text('Bold text'), const Offset(0, -200));
+      // await tester.pumpAndSettle(const Duration(milliseconds: 200));
 
       expect(find.text('Text scaling factor'), findsOneWidget);
 
