@@ -55,6 +55,8 @@ void main() {
 
       expect(find.text('2.0'), findsOneWidget);
       await tester.pumpAndSettle(const Duration(seconds: 3));
+      await tester.tap(find.byIcon(Icons.close));
+      await tester.pumpAndSettle(const Duration(seconds: 3));
 
       // could confirm the you have pressed not visibile before scale 2
       // and visible adter
