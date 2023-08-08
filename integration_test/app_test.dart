@@ -30,6 +30,8 @@ void main() {
 
       // Verify the counter increments by 1.
       expect(find.text('1'), findsOneWidget);
+      double textWidth = find.text('1').evaluate().first.size?.width ?? 0;
+      debugPrint('textWidth=** $textWidth');
       await tester.tap(find.text('Device Preview'));
       await tester.pumpAndSettle(const Duration(milliseconds: 200));
 
@@ -57,6 +59,8 @@ void main() {
       await tester.pumpAndSettle(const Duration(seconds: 3));
       await tester.tap(find.byIcon(Icons.close));
       await tester.pumpAndSettle(const Duration(seconds: 3));
+      textWidth = find.text('1').evaluate().first.size?.width ?? 0;
+      debugPrint('textWidth=** $textWidth');
 
       // could confirm the you have pressed not visibile before scale 2
       // and visible adter
