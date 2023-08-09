@@ -22,9 +22,31 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'T'),
+      home: const MyMiniApp(),
     );
   }
+}
+
+class MyMiniApp extends StatelessWidget {
+  const MyMiniApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) => MaterialApp(
+        title: 'Flutter Demo',
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: Scaffold(
+          body: Container(
+            padding: const EdgeInsets.all(77),
+            child: const Text('T'),
+          ),
+        ),
+      );
 }
 
 class MyHomePage extends StatefulWidget {
